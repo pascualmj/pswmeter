@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Password Strength Meter By Manuel Pascual</title>
+
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    
+    <section style="padding-right: 15px; padding-left: 15px;">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col">
+              
+              <form>
+                <div class="form-group">
+                  <label>Contraseña</label>
+                  <input id="clave" type="password" class="form-control">
+                  <div id="control-clave-fuerte" class="mt-3"></div>
+                  <small class="form-text text-muted mt-3">La contraseña que elijas debe cumplir con los siguientes requisitos: 1) Poseer al menos 1 letra minúscula. 2) Contener al menos 1 letra mayúscula. 3) Tener al menos un caracter numérico. 4) Tener una extensión de 8 caracteres o más.</small>
+                </div>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="pswmeter.js"></script>
+    <script>
+    
+    // Run pswmeter with options
+    passwordStrengthMeter({
+      containerElement: '#control-clave-fuerte',
+      passwordInput: '#clave',
+      height: 6,
+      borderRadius: 3,
+      pswMinLength: 12,
+      colorScore1: '#aaa',
+      colorScore2: '#aaa',
+      colorScore3: '#aaa',
+      colorScore4: 'limegreen'
+    });
+
+    </script>
+  </body>
+</html>
