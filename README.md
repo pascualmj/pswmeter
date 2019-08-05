@@ -2,10 +2,10 @@
 
 Simple JS plugin for adding strength meter to password input. This plugin check password input to meet these requirements:
 
-1- Password have at least one lowercase alfabetic character.
-2- Password have at least one uppercase alfabetic character.
-3- Password have at least one numeric character.
-4- Password length have to be greater than 8 characters.
+ 1. Password have at least one lowercase alfabetic character.
+ 2. Password have at least one uppercase alfabetic character.
+ 3. Password have at least one numeric character.
+ 4. Password length have to be greater than 8 characters.
 
 It's usage is straightforward:
 
