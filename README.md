@@ -7,7 +7,7 @@ Simple JS plugin for adding strength meter to password input. This plugin check 
  3. Password has at least one numeric character.
  4. Password length has to be greater than 8 characters.
 
-It's usage is straightforward:
+You can find a [demo here](https://pascualmj.github.io/pswmeter/ "demo here"). It's usage is straightforward:
 
 **HTML**
 ```html
