@@ -11,29 +11,32 @@ You can find a [demo here](https://pascualmj.github.io/pswmeter/ "demo here"). I
 
 **HTML**
 ```html
-<input id="pswInput" type="password">
+<input id="psw-input" type="password">
 <div id="pswmeter"></div>
+<div id="pswmeter-message"></div>
 ```
-Add an ID for both password input and div where you want to show the **pswmeter**.
+Add an ID for password input, the container where you want to show the **pswmeter** and the one that will show your messages (optional).
 
 **JS**
 ```javascript
 // Run pswmeter with options
 passwordStrengthMeter({
   containerElement: '#pswmeter',
-  passwordInput: '#pswInput'
+  passwordInput: '#psw-input',
+  showMessage: true,
+  messageContainer: '#pswmeter-message'
 });
 ```
-Those two options, `containerElement` and `passwordInput`, are **required**. You have to indicate the css selector preferable using id.
+The first two options, `containerElement` and `passwordInput`, are **required**. You must indicate the containers using ID selectors only. Optionally, you can set `showMessage` to `true` if you want to show messages to the user. If you do so, you must add `messageContainer` to indicate the container using ID selector only.
 
 ## Options
 
-Customize the **pswmeter** by passing more properties inside the function's argument. These are the available properties you can use:
+Customize the **pswmeter** by passing more properties inside the function's arguments. These are the available properties you can use:
 
 | Option | Default value | Value type | Required | Explanation |
 | :------------ | :------------ | :------------ | :------------ | :------------ |
-| containerElement | no | String | Yes | ID selector. For example: '#pswmeter' |
-| passwordInput | no | String | Yes | ID selector. For example: '#pswInput' |
+| containerElement | - | String | Yes | ID selector. For example: '#pswmeter' |
+| passwordInput | - | String | Yes | ID selector. For example: '#psw-input' |
 | height | 4 | Number | No | - |
 | borderRadius | 2 | Number | No | - |
 | pswMinLength | 8 | Number | No | - |
@@ -41,6 +44,9 @@ Customize the **pswmeter** by passing more properties inside the function's argu
 | colorScore2 | #ffff00 | String | No | Hex, RGB or named color values. For example: '#000', 'rgb(0,0,0)' or 'black' |
 | colorScore3 | #aeff00 | String | No | Hex, RGB or named color values. For example: '#000', 'rgb(0,0,0)' or 'black' |
 | colorScore4 | #00ff00 | String | No | Hex, RGB or named color values. For example: '#000', 'rgb(0,0,0)' or 'black' |
+| showMessage | false | Boolean | No | By default this functionality is disabled, if you want to show messages you have to set this property to `true` |
+| messageContainer | - | String | No | If you set `showMessage` to `true` **you must** indicate the ID selector for the container that will show messages |
+| messagesList | ['No data', 'Too simple', 'Simple', 'Thats OK', 'Great password!'] | Array | No | The first 5 items inside this array will override the default values in order. The first item is shown when the password's score is equal to 0, the second item is shown when the password's score is equal to 1, and so on. |
 
 ## Contributions
 
