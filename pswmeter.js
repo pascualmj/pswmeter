@@ -9,7 +9,7 @@ function passwordStrengthMeter(opts) {
 			background-color: #eee;
 			position: relative;
 			overflow: hidden;
-			border-radius: ${opts.borderRadius || 2}px;
+			border-radius: ${opts.borderRadius.toString() || 2}px;
 		}
     ${opts.containerElement} .password-strength-meter-score {
       height: inherit;
@@ -39,6 +39,11 @@ function passwordStrengthMeter(opts) {
 		checkPassword(this.value)
 	})
 
+	// Score Message
+	let scoreMessage = opts.showMessage ? document.getElementById(opts.messageContainer.slice(1)) : null
+	let messagesList = opts.messagesList === undefined ? ['No data', 'Too simple', 'Simple', 'That\'s OK', 'Great password!'] : opts.messagesList
+	if (scoreMessage) { scoreMessage.textContent = messagesList[0] || 'No data'}
+
 	// Check Password Function
 	function checkPassword(password) {
 
@@ -66,18 +71,23 @@ function passwordStrengthMeter(opts) {
     switch(score) {
       case 1:
         scoreBar.className = 'password-strength-meter-score psms-25'
+        if (scoreMessage) { scoreMessage.textContent = messagesList[1] || 'Too simple' }
         break
       case 2:
         scoreBar.className = 'password-strength-meter-score psms-50'
+        if (scoreMessage) { scoreMessage.textContent = messagesList[2] || 'Simple' }
         break
       case 3:
         scoreBar.className = 'password-strength-meter-score psms-75'
+        if (scoreMessage) { scoreMessage.textContent = messagesList[3] || 'That\'s OK' }
         break
       case 4:
         scoreBar.className = 'password-strength-meter-score psms-100'
+        if (scoreMessage) { scoreMessage.textContent = messagesList[4] || 'Great password!' }
         break
       default:
         scoreBar.className = 'password-strength-meter-score'
+        if (scoreMessage) { scoreMessage.textContent = messagesList[0] || 'No data' }
     }
   }
 
