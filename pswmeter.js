@@ -72,23 +72,31 @@ function passwordStrengthMeter(opts) {
       case 1:
         scoreBar.className = 'password-strength-meter-score psms-25'
         if (scoreMessage) { scoreMessage.textContent = messagesList[1] || 'Too simple' }
+        containerElement.dispatchEvent(new Event('onScore1', { bubbles: true }))
         break
       case 2:
         scoreBar.className = 'password-strength-meter-score psms-50'
         if (scoreMessage) { scoreMessage.textContent = messagesList[2] || 'Simple' }
+        containerElement.dispatchEvent(new Event('onScore2', { bubbles: true }))
         break
       case 3:
         scoreBar.className = 'password-strength-meter-score psms-75'
         if (scoreMessage) { scoreMessage.textContent = messagesList[3] || 'That\'s OK' }
+        containerElement.dispatchEvent(new Event('onScore3', { bubbles: true }))
         break
       case 4:
         scoreBar.className = 'password-strength-meter-score psms-100'
         if (scoreMessage) { scoreMessage.textContent = messagesList[4] || 'Great password!' }
+        containerElement.dispatchEvent(new Event('onScore4', { bubbles: true }))
         break
       default:
         scoreBar.className = 'password-strength-meter-score'
         if (scoreMessage) { scoreMessage.textContent = messagesList[0] || 'No data' }
+        containerElement.dispatchEvent(new Event('onScore0', { bubbles: true }))
     }
   }
+
+  // Return Container Element
+  return containerElement
 
 }
