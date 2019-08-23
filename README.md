@@ -20,7 +20,7 @@ Add an ID for password input, the container where you want to show the **pswmete
 **JS**
 ```javascript
 // Run pswmeter with options
-passwordStrengthMeter({
+const myPassMeter = passwordStrengthMeter({
   containerElement: '#pswmeter',
   passwordInput: '#psw-input',
   showMessage: true,
@@ -45,8 +45,40 @@ Customize the **pswmeter** by passing more properties inside the function's argu
 | colorScore3 | #aeff00 | String | No | Hex, RGB or named color values. For example: '#000', 'rgb(0,0,0)' or 'black' |
 | colorScore4 | #00ff00 | String | No | Hex, RGB or named color values. For example: '#000', 'rgb(0,0,0)' or 'black' |
 | showMessage | false | Boolean | No | By default this functionality is disabled, if you want to show messages you have to set this property to `true` |
-| messageContainer | - | String | No | If you set `showMessage` to `true` **you must** indicate the ID selector for the container that will show messages |
+| messageContainer | - | String | No | If you set `showMessage` to `true` **you must** indicate the ID selector for the container that will show messages. |
 | messagesList | ['No data', 'Too simple', 'Simple', 'Thats OK', 'Great password!'] | Array | No | The first 5 items inside this array will override the default values in order. The first item is shown when the password's score is equal to 0, the second item is shown when the password's score is equal to 1, and so on. |
+
+## Events
+
+Custom events are dispatched from `containerElement` ready to be listened. These are the available events you can use:
+
+| Event | Usage | Explanation |
+| :------------ | :------------ | :------------ |
+| onScore0 | `myPassMeter.containerElement.addEventListener('onScore0', function() { ... })` | This event is fired when the score is equal to 0. |
+| onScore1 | `myPassMeter.containerElement.addEventListener('onScore1', function() { ... })` | This event is fired when the score is equal to 1. |
+| onScore2 | `myPassMeter.containerElement.addEventListener('onScore2', function() { ... })` | This event is fired when the score is equal to 2. |
+| onScore3 | `myPassMeter.containerElement.addEventListener('onScore3', function() { ... })` | This event is fired when the score is equal to 3. |
+| onScore4 | `myPassMeter.containerElement.addEventListener('onScore4', function() { ... })` | This event is fired when the score is equal to 4. |
+
+## Methods
+
+For now there is only one method available:
+
+| Method | Usage | Returned possible values | Explanation |
+| :------------ | :------------ | :------------ | :------------ |
+| getScore | `myPassMeter.getScore()` | `0`, `1`, `2`, `3` or `4` | This method when called returns a Number with the current score of the selected password field. |
+
+## Updates
+
+**v1.1** ::: Aug 23, 2019
+- Added: custom event dispatching on updateScore function.
+- Added: getScore() function that return the current score of the selected password field.
+- Added: return anonymous object with the containerElement (to be able to listening for custom events) and getScore function.
+- Updated: docs folder for github repo.
+- Updated: README.md file and documentation.
+
+**v1.0** ::: Aug 14, 2019
+Initial release.
 
 ## Contributions
 
