@@ -35,9 +35,14 @@ function passwordStrengthMeter(opts) {
 
 	// Password input
 	const passwordInput = document.getElementById(opts.passwordInput.slice(1))
+	let passwordInputValue = ''
 	passwordInput.addEventListener('keyup', function() {
-		checkPassword(this.value)
+		passwordInputValue = this.value
+		checkPassword()
 	})
+
+	// Chosen Min Length
+	let pswMinLength = opts.pswMinLength || 8
 
 	// Score Message
 	let scoreMessage = opts.showMessage ? document.getElementById(opts.messageContainer.slice(1)) : null
@@ -45,24 +50,32 @@ function passwordStrengthMeter(opts) {
 	if (scoreMessage) { scoreMessage.textContent = messagesList[0] || 'No data'}
 
 	// Check Password Function
-	function checkPassword(password) {
+	function checkPassword() {
 
-	  let score = 0
+	  let score = getScore()
+	  updateScore(score)
+
+	}
+
+	// Get Score Function
+	function getScore() {
+
+		let score = 0
 
 	  let regexLower = new RegExp('(?=.*[a-z])')
 	  let regexUpper = new RegExp('(?=.*[A-Z])')
 	  let regexDigits = new RegExp('(?=.*[0-9])')
 	  // For length score print user selection or default value
-	  let regexLength = new RegExp('(?=.{' + (opts.pswMinLength || 8) + ',})')
+	  let regexLength = new RegExp('(?=.{' + pswMinLength + ',})')
 
-	  if (password.match(regexLower)) { ++score }
-	  if (password.match(regexUpper)) { ++score }
-	  if (password.match(regexDigits)) { ++score }
-	  if (password.match(regexLength)) { ++score }
+	  if (passwordInputValue.match(regexLower)) { ++score }
+	  if (passwordInputValue.match(regexUpper)) { ++score }
+	  if (passwordInputValue.match(regexDigits)) { ++score }
+	  if (passwordInputValue.match(regexLength)) { ++score }
 
-	  if (score === 0 && password.length > 0) { ++score }
+	  if (score === 0 && passwordInputValue.length > 0) { ++score }
 
-	  updateScore(score)
+	  return score
 
 	}
 
@@ -96,7 +109,10 @@ function passwordStrengthMeter(opts) {
     }
   }
 
-  // Return Container Element
-  return containerElement
+  // Return anonymous object with properties
+  return {
+  	containerElement,
+  	getScore
+  }
 
 }
