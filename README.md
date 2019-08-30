@@ -1,13 +1,13 @@
 # pswmeter
 
-Simple JS plugin for adding strength meter to password input. This plugin check password input to meet these requirements:
+Is a simple JS plugin for adding strength meter to password input. This plugin checks password input to meet the following requirements:
 
  1. Password has at least one lowercase alfabetic character.
  2. Password has at least one uppercase alfabetic character.
  3. Password has at least one numeric character.
  4. Password length has to be greater than 8 characters.
 
-You can find a [demo here](https://pascualmj.github.io/pswmeter/ "demo here"). It's usage is straightforward:
+You can find a demo [here](https://pascualmj.github.io/pswmeter/ "demo here"). It's usage is straightforward:
 
 **HTML**
 ```html
@@ -31,7 +31,7 @@ The first two options, `containerElement` and `passwordInput`, are **required**.
 
 ## Options
 
-Customize the **pswmeter** by passing more properties inside the function's arguments. These are the available properties you can use:
+Customize the **pswmeter** by adding more properties inside the function's arguments. These are the available properties you can use:
 
 | Option | Default value | Value type | Required | Explanation |
 | :------------ | :------------ | :------------ | :------------ | :------------ |
@@ -66,7 +66,7 @@ For now there is only one method available:
 
 | Method | Usage | Returned possible values | Explanation |
 | :------------ | :------------ | :------------ | :------------ |
-| getScore | `myPassMeter.getScore()` | `0`, `1`, `2`, `3` or `4` | This method when called returns a Number with the current score of the selected password field. |
+| getScore | `myPassMeter.getScore()` | `0`, `1`, `2`, `3` or `4` | When called, this method returns a Number with the current score of the selected password field. |
 
 ## Updates
 
